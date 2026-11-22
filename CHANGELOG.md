@@ -2,6 +2,24 @@
 
 All notable changes to **CardputerZero Piano Zero** are documented in this file.
 
+## [0.2.0] - 2026-11-22
+
+### Added
+- **In-App Sound Bank Downloader & First-Run Auto-Prompt (`BNK → Download Online Banks`)**:
+  - Automatically opens the online bank catalog on first launch when no `.sf2` banks are installed, and remains accessible anytime to add more instruments.
+  - Curated 5-bank catalog with instrument type, source/license, download size, DFD RAM footprint, and SD free space check:
+    - **Salamander Grand Full** (`695 MB` + `36 MB` mech — Yamaha C5, 14 vel layers)
+    - **Salamander Grand Lite** (`237 MB` + `36 MB` mech — Yamaha C5, 6 vel layers)
+    - **Nice Steinway v3.8** (`205 MB` — Steinway Concert Grand)
+    - **Rhodes EPs Plus v2.3** (`50 MB` — Multi-preset Fender Rhodes MkI/II & Suitcase)
+    - **Abbey Steinway D** (`38 MB` — Compact Steinway D starter bank)
+  - Resumable `curl` downloads with live neon progress bar (`%`, `MB/MB`, `MB/s`), `Esc` cancel, `RIFF sfbk` validation, atomic install, auto-fetch of `mech.sf2` for Salamander banks, and automatic DFD load on completion.
+
+### Fixed
+- **SF2 Loop-Offset Generators (`gen 0, 1, 2, 3, 4, 12, 45, 50`)**: Fixed sustain loop points on multi-sample electric piano banks (eliminates ghost attack repetitions on `Rhodes-EPs-Plus.sf2`).
+- **SF2 Per-Voice Lowpass Filter (`gen 8: initialFilterFc`) & DFD Loop Safety**: Added per-voice 1-pole lowpass filter, raised full-RAM threshold to `64 MB`, preloaded loop regions for large DFD banks, and prevented ring-buffer wrap hiss on 17-second Steinway tails.
+- **Startup HW System Volume (`70%`)**: Applied hardware/PipeWire unmute & `70%` startup volume *after* `audio_.start()` activates the USB PipeWire sink.
+
 ## [0.1.1] - 2026-11-22
 
 ### Changed

@@ -1,6 +1,6 @@
 # CardputerZero Piano Zero — User Manual
 
-Complete operating guide for **Piano Zero (`v0.1.0`)** on the **M5Stack CardputerZero**.
+Complete operating guide for **Piano Zero (`v0.2.0`)** on the **M5Stack CardputerZero**.
 
 ---
 
@@ -59,7 +59,9 @@ The Alesis V61's 4 illuminated buttons operate as **latching toggles** (LED ON =
 - Displays active bank name, streaming badge (`DFD STRM` or `IN RAM`), memory footprint, Gain/Curve/Octave readout, and live **`MCH`** (Mechanics), **`REV`** (Reverb), and **`PED`** (Sustain Pedal) status pills.
 - Includes a real-time **24-bar oscilloscope**, stereo **`L`/`R` VU meters**, and an **88-key visualizer** (pressed keys light up in neon teal; sustained keys glow in cyan).
 
-### `BNK` — Piano Banks & DFD Streaming
+### `BNK` — Piano Banks, In-App Downloader & DFD Streaming
+- **First-Run Auto-Prompt**: If no `.sf2` banks are installed yet, Piano Zero automatically opens **`Download Online Banks`** so you can pick a bank over Wi-Fi right on the CardputerZero.
+- **Download Online Banks (`[ENTER]`)**: Available anytime (even when banks are already installed) to download curated acoustic & electric piano banks (Salamander Full/Lite, Nice Steinway v3.8, Rhodes EPs Plus v2.3, Abbey Steinway D) with instrument info, size, DFD RAM usage, live progress bar, and `Esc` cancel.
 - Lists all `.sf2` banks found in `/usr/share/APPLaunch/share/piano-banks/` and `~/.config/cardputerzero-pianozero/banks/` (excluding `mech.sf2`).
 - Press **`Enter`** on any bank to hot-load it asynchronously (takes ~2–4 s via DFD).
 - **Per-Bank Profiles**: Touch curve, gain, mechanics levels, and preset choice are automatically saved per bank in `~/.config/cardputerzero-pianozero/profile_<bank>.cfg`.

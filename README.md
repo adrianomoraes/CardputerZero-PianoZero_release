@@ -8,7 +8,7 @@
 
 *Created by **Adriano Dias Moraes***
 
-[![Latest Release](https://img.shields.io/badge/Release-v0.1.1-00E5B0?style=for-the-badge)](releases/v0.1.1/piano-zero_0.1.1-m5stack1_arm64.deb)
+[![Latest Release](https://img.shields.io/badge/Release-v0.2.0-00E5B0?style=for-the-badge)](releases/v0.2.0/piano-zero_0.2.0-m5stack1_arm64.deb)
 [![Platform](https://img.shields.io/badge/Platform-M5Stack%20CardputerZero%20(ARM64)-2563EB?style=for-the-badge)](#installation)
 [![Manual](https://img.shields.io/badge/User%20Manual-MANUAL.md-00D4FF?style=for-the-badge)](MANUAL.md)
 [![Changelog](https://img.shields.io/badge/Changelog-CHANGELOG.md-FFB020?style=for-the-badge)](CHANGELOG.md)
@@ -31,6 +31,7 @@ Plug in **any class-compliant USB MIDI keyboard** and **USB audio interface** (o
 
 | Version | Release Date | Package (ARM64 Debian) | Checksum | Notes |
 |---|---|---|---|---|
+| **`v0.2.0`** | 2026-11-22 | [`piano-zero_0.2.0-m5stack1_arm64.deb`](releases/v0.2.0/piano-zero_0.2.0-m5stack1_arm64.deb) | [`SHA256SUMS.txt`](releases/v0.2.0/SHA256SUMS.txt) | **In-App Sound Bank Downloader & First-Run Auto-Prompt** (Salamander Full/Lite, Nice Steinway v3.8, Rhodes EPs Plus, Abbey Steinway D), SF2 loop-offset & per-voice lowpass filter fixes (clean Rhodes loops & Steinway tails), 70% startup HW volume — see [CHANGELOG.md](CHANGELOG.md) |
 | **`v0.1.1`** | 2026-11-22 | [`piano-zero_0.1.1-m5stack1_arm64.deb`](releases/v0.1.1/piano-zero_0.1.1-m5stack1_arm64.deb) | [`SHA256SUMS.txt`](releases/v0.1.1/SHA256SUMS.txt) | Initial public release — 700 MB DFD SF2 streaming engine, `exxpiano` real piano mechanics, Freeverb Hall Reverb, SMF MIDI player (*La Campanella* & *Un Sospiro*), instant DSP Master Volume on V61 `K4`, latching V61 toggle buttons (`CC 48–51`), fluid non-blocking `AUD` system volume & neon B2 icon — see [CHANGELOG.md](CHANGELOG.md) |
 
 ---
@@ -42,30 +43,23 @@ No compiler or build tools required. Install the prebuilt ARM64 `.deb` package d
 ### Option 1: Install Directly on CardputerZero
 Download the `.deb` package to your CardputerZero and run:
 ```bash
-sudo apt install -y ./piano-zero_0.1.1-m5stack1_arm64.deb
+sudo apt install -y ./piano-zero_0.2.0-m5stack1_arm64.deb
 ```
 
 ### Option 2: Install Remotely Over SSH (from macOS / Linux / Windows)
 ```bash
-scp releases/v0.1.1/piano-zero_0.1.1-m5stack1_arm64.deb <user>@<cardputer-ip>:/tmp/
-ssh <user>@<cardputer-ip> "sudo apt install -y /tmp/piano-zero_0.1.1-m5stack1_arm64.deb"
+scp releases/v0.2.0/piano-zero_0.2.0-m5stack1_arm64.deb <user>@<cardputer-ip>:/tmp/
+ssh <user>@<cardputer-ip> "sudo apt install -y /tmp/piano-zero_0.2.0-m5stack1_arm64.deb"
 ```
 
 After installation, **Piano Zero** appears automatically in the CardputerZero **`APPLaunch`** launcher with its neon icon.
 
-### SoundFont Banks Setup (Required)
-Because the Salamander Grand Piano V3 SoundFonts are large (~700 MB) and licensed CC-BY, they are installed separately on your microSD card:
-
-1. Build `piano-full.sf2`, `piano-lite.sf2`, and `mech.sf2` on macOS/Linux using [exxpiano](https://github.com/exxbrain/exxpiano)'s `scripts/make-soundfonts.sh -p full` (or drop in any standard `.sf2` piano SoundFont!).
-2. Copy the `.sf2` files onto your CardputerZero:
-   ```bash
-   scp piano-full.sf2 mech.sf2 <user>@<cardputer-ip>:~/.config/cardputerzero-pianozero/banks/
-   ```
-   *(Or install system-wide into `/usr/share/APPLaunch/share/piano-banks/`.)*
+### SoundFont Banks Setup (Built-In In-App Downloader!)
+On first launch (when no `.sf2` banks are installed yet), **Piano Zero automatically opens `BNK → Download Online Banks`** so you can pick and download any of the 5 curated banks directly over Wi-Fi on your CardputerZero (Salamander Grand Full 695 MB, Salamander Grand Lite 237 MB, Nice Steinway v3.8 205 MB, Rhodes EPs Plus 50 MB, or Abbey Steinway D 38 MB). You can also open **`BNK → Download Online Banks`** anytime later to add more instruments, or `scp` any custom `.sf2` file into `~/.config/cardputerzero-pianozero/banks/`.
 
 ### Verify Package Integrity (Optional)
 ```bash
-cd releases/v0.1.1
+cd releases/v0.2.0
 sha256sum -c SHA256SUMS.txt
 ```
 
