@@ -31,7 +31,9 @@ When on the **`PLY`** tab, you can play directly on the CardputerZero keyboard:
 
 ## 2. USB MIDI Controllers & Alesis V61 Controls
 
-Any class-compliant USB MIDI keyboard and sustain pedal (`CC 64`) works out-of-the-box via ALSA Sequencer hot-plugging (scanned every 2 seconds).
+**Any class-compliant USB MIDI keyboard and sustain pedal works out-of-the-box** via ALSA Sequencer hot-plugging (scanned every 2 seconds) — standard MIDI notes, velocity, sustain pedal (`CC 64`), and master volume (`CC 7`) work on any controller with zero configuration.
+
+The hardware knob and button defaults below were **tested and pre-configured on the Alesis V61** *(configurable MIDI Learn for mapping knobs and buttons on any other controller is planned for an upcoming release)*.
 
 ### Alesis V61 Latching Toggle Buttons (`CC 48–51`)
 The Alesis V61's 4 illuminated buttons operate as **latching toggles** (LED ON = `127`, LED OFF = `0`), and Piano Zero syncs directly to their latched state:
@@ -107,7 +109,7 @@ The Alesis V61's 4 illuminated buttons operate as **latching toggles** (LED ON =
 ## 4. Adding Custom `.sf2` Banks or `.mid` Files
 Copy files via `scp` onto your CardputerZero:
 ```bash
-scp MyPiano.sf2 adrianomoraes@<ip>:~/.config/cardputerzero-pianozero/banks/
-scp MyPiece.mid adrianomoraes@<ip>:~/.config/cardputerzero-pianozero/midi/
+scp MyPiano.sf2 <user>@<cardputer-ip>:~/.config/cardputerzero-pianozero/banks/
+scp MyPiece.mid <user>@<cardputer-ip>:~/.config/cardputerzero-pianozero/midi/
 ```
 Then press **`Enter`** on **Rescan SD Banks** in the `BNK` tab (or open the `MID` tab).
