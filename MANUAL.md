@@ -2,6 +2,8 @@
 
 Complete operating guide for **Piano Zero (`v0.2.0`)** on the **M5Stack CardputerZero**.
 
+> **Note on SoundFont Banks:** The Piano Zero `.deb` package (`~730 KB`) installs the application, icon, and demo MIDI pieces only — **`.sf2` instrument banks are not bundled in the `.deb`**. On first launch (or anytime via **`BNK → Download Online Banks`**), you can download any of the 5 curated acoustic & electric piano banks directly over Wi-Fi onto your microSD card, or copy your own `.sf2` files via `scp`.
+
 ---
 
 ## 1. Navigation & Controls
@@ -61,7 +63,13 @@ The Alesis V61's 4 illuminated buttons operate as **latching toggles** (LED ON =
 
 ### `BNK` — Piano Banks, In-App Downloader & DFD Streaming
 - **First-Run Auto-Prompt**: If no `.sf2` banks are installed yet, Piano Zero automatically opens **`Download Online Banks`** so you can pick a bank over Wi-Fi right on the CardputerZero.
-- **Download Online Banks (`[ENTER]`)**: Available anytime (even when banks are already installed) to download curated acoustic & electric piano banks (Salamander Full/Lite, Nice Steinway v3.8, Rhodes EPs Plus v2.3, Abbey Steinway D) with instrument info, size, DFD RAM usage, live progress bar, and `Esc` cancel.
+- **Download Online Banks (`[ENTER]`)**: Available anytime (even when banks are already installed) to download from 5 curated acoustic & electric piano banks with instrument type, source/license, download size, DFD RAM usage, live progress bar, and `Esc` cancel:
+  - **Salamander Grand Full** (`695 MB` + `36 MB` mechanics) — Yamaha C5 Concert Grand, 14 velocity layers (FreePats / A. Holm, CC-BY 3.0)
+  - **Salamander Grand Lite** (`237 MB` + `36 MB` mechanics) — Yamaha C5 Concert Grand, 6 velocity layers (FreePats / A. Holm, CC-BY 3.0)
+  - **Nice Steinway v3.8** (`205 MB`) — Steinway Concert Grand (`soundfonts4u` / Hugging Face)
+  - **Rhodes EPs Plus v2.3** (`50 MB`) — Multi-preset Fender Rhodes MkI/II & Suitcase electric pianos (`soundfonts4u` / Hugging Face)
+  - **Abbey Steinway D** (`38 MB`) — Compact Steinway D starter grand (`soundfonts4u` / Hugging Face)
+- **Last-Bank Recall**: Piano Zero automatically remembers the most recently loaded bank and reloads it (along with its per-bank preset & mechanics profile) the next time you open the app.
 - Lists all `.sf2` banks found in `/usr/share/APPLaunch/share/piano-banks/` and `~/.config/cardputerzero-pianozero/banks/` (excluding `mech.sf2`).
 - Press **`Enter`** on any bank to hot-load it asynchronously (takes ~2–4 s via DFD).
 - **Per-Bank Profiles**: Touch curve, gain, mechanics levels, and preset choice are automatically saved per bank in `~/.config/cardputerzero-pianozero/profile_<bank>.cfg`.
