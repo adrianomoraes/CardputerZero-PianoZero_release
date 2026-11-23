@@ -2,6 +2,18 @@
 
 All notable changes to **CardputerZero Piano Zero** are documented in this file.
 
+## [0.3.0] - 2026-11-23
+
+### Added
+- **Universal Configurable MIDI Learn (`MID` Tab + `L` Key Shortcut)**:
+  - Remap any USB MIDI controller's rotary knobs, faders, and buttons to 15 targets (`Master Volume`, `Piano Gain`, `Touch Curve`, `Reverb Send`, `Hammer Boost`, `String Reso`, `Tone Tilt`, `NAV Mode Btn`, `MIDI Play Btn`, `Reverb Toggle`, `Mechanics Btn`, and `NAV` Tab/Row/Val/Preset knobs).
+  - Supports both **`LATCH (Toggle)`** (e.g. Alesis V61 illuminated buttons) and **`PUSH (Momentary)`** button behaviors, persists mappings to `~/.config/cardputerzero-pianozero/midi_map.cfg`, and includes **`Reset V61 Map`**.
+- **Persistent Last-Loaded Bank & Profile Recall**:
+  - Atomically saves `last_bank=<filename>` to `config.cfg` whenever a bank finishes loading (and on exit), plus saves the previous bank's profile before switching so your last instrument and per-bank settings always reload cleanly.
+
+### Fixed
+- **Smooth Reverb / FX Fade-Out**: Replaced the hard reverb cut-off at `send == 0` with per-sample smooth ramping of `cur_send_gain_` & `cur_wet_scale_` plus tail-energy tracking, so turning Reverb Send down to zero lets the wet tail decay naturally with zero abrupt drop.
+
 ## [0.2.0] - 2026-11-22
 
 ### Added

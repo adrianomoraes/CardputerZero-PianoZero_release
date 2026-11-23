@@ -1,6 +1,6 @@
 # CardputerZero Piano Zero — User Manual
 
-Complete operating guide for **Piano Zero (`v0.2.0`)** on the **M5Stack CardputerZero**.
+Complete operating guide for **Piano Zero (`v0.3.0`)** on the **M5Stack CardputerZero**.
 
 > **Note on SoundFont Banks:** The Piano Zero `.deb` package (`~730 KB`) installs the application, icon, and demo MIDI pieces only — **`.sf2` instrument banks are not bundled in the `.deb`**. On first launch (or anytime via **`BNK → Download Online Banks`**), you can download any of the 5 curated acoustic & electric piano banks directly over Wi-Fi onto your microSD card, or copy your own `.sf2` files via `scp`.
 
@@ -29,11 +29,20 @@ When on the **`PLY`** tab, you can play directly on the CardputerZero keyboard:
 
 ---
 
-## 2. USB MIDI Controllers & Alesis V61 Controls
+## 2. USB MIDI Controllers, Universal MIDI Learn & Alesis V61 Defaults
 
 **Any class-compliant USB MIDI keyboard and sustain pedal works out-of-the-box** via ALSA Sequencer hot-plugging (scanned every 2 seconds) — standard MIDI notes, velocity, sustain pedal (`CC 64`), and master volume (`CC 7`) work on any controller with zero configuration.
 
-The hardware knob and button defaults below were **tested and pre-configured on the Alesis V61** *(configurable MIDI Learn for mapping knobs and buttons on any other controller is planned for an upcoming release)*.
+### Universal Configurable MIDI Learn (Any Controller)
+You can bind knobs, faders, and buttons from **any** USB MIDI controller in two ways:
+1. **Quick `L`-Key Learn**: Highlight a parameter on **`TCH`**, **`FX`**, **`AUD`**, or **`MID`** and press **`L`** — the footer flashes amber (`LEARN [<Target>]: Move CC...`). Move any knob/fader or press any button on your controller to bind it immediately (press **`Esc`** to cancel).
+2. **`MID` Tab Learn Menu**:
+   - **`MIDI Learn`**: Select any of the 15 targets (`Z`/`C`) and press **`Enter`** to learn its CC.
+   - **`Btn Behavior`**: For button targets (`NAV Mode`, `MIDI Play`, `Reverb Toggle`, `Mechanics`), switch between **`LATCH (Toggle)`** (for controllers whose buttons send `127` ON / `0` OFF like the Alesis V61) and **`PUSH (Momentary)`** (for controllers whose push buttons toggle on every press).
+   - **`Reset V61 Map`**: Press **`Enter`** to restore factory Alesis V61 defaults.
+   - Custom mappings are saved automatically to `~/.config/cardputerzero-pianozero/midi_map.cfg`.
+
+The factory defaults below were **tested and pre-configured on the Alesis V61**:
 
 ### Alesis V61 Latching Toggle Buttons (`CC 48–51`)
 The Alesis V61's 4 illuminated buttons operate as **latching toggles** (LED ON = `127`, LED OFF = `0`), and Piano Zero syncs directly to their latched state:

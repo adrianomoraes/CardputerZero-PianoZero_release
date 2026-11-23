@@ -8,7 +8,7 @@
 
 *Created by **Adriano Dias Moraes***
 
-[![Latest Release](https://img.shields.io/badge/Release-v0.2.0-00E5B0?style=for-the-badge)](releases/v0.2.0/piano-zero_0.2.0-m5stack1_arm64.deb)
+[![Latest Release](https://img.shields.io/badge/Release-v0.3.0-00E5B0?style=for-the-badge)](releases/v0.3.0/piano-zero_0.3.0-m5stack1_arm64.deb)
 [![Platform](https://img.shields.io/badge/Platform-M5Stack%20CardputerZero%20(ARM64)-2563EB?style=for-the-badge)](#installation)
 [![Manual](https://img.shields.io/badge/User%20Manual-MANUAL.md-00D4FF?style=for-the-badge)](MANUAL.md)
 [![Changelog](https://img.shields.io/badge/Changelog-CHANGELOG.md-FFB020?style=for-the-badge)](CHANGELOG.md)
@@ -32,6 +32,7 @@ Using a custom C++17 **Direct-From-Disk (DFD) SoundFont 2 (`.sf2`) streaming eng
 
 | Version | Release Date | Package (ARM64 Debian) | Checksum | Notes |
 |---|---|---|---|---|
+| **`v0.3.0`** | 2026-11-23 | [`piano-zero_0.3.0-m5stack1_arm64.deb`](releases/v0.3.0/piano-zero_0.3.0-m5stack1_arm64.deb) | [`SHA256SUMS.txt`](releases/v0.3.0/SHA256SUMS.txt) | **Universal Configurable MIDI Learn** (`L` key & `MID` tab, Latch/Push button modes, 15 targets), **smooth reverb fade-out** to zero (no abrupt tail cut-off), and **persistent last-loaded bank recall** — see [CHANGELOG.md](CHANGELOG.md) |
 | **`v0.2.0`** | 2026-11-22 | [`piano-zero_0.2.0-m5stack1_arm64.deb`](releases/v0.2.0/piano-zero_0.2.0-m5stack1_arm64.deb) | [`SHA256SUMS.txt`](releases/v0.2.0/SHA256SUMS.txt) | **In-App Sound Bank Downloader & First-Run Auto-Prompt** (5 curated acoustic & electric piano banks), SF2 loop-offset & per-voice lowpass filter fixes (clean Rhodes loops & Steinway tails), 70% startup HW volume — see [CHANGELOG.md](CHANGELOG.md) |
 | **`v0.1.1`** | 2026-11-22 | [`piano-zero_0.1.1-m5stack1_arm64.deb`](releases/v0.1.1/piano-zero_0.1.1-m5stack1_arm64.deb) | [`SHA256SUMS.txt`](releases/v0.1.1/SHA256SUMS.txt) | Initial public release — 700 MB DFD SF2 streaming engine, `exxpiano` real piano mechanics, Freeverb Hall Reverb, SMF MIDI player (*La Campanella* & *Un Sospiro*), instant DSP Master Volume on V61 `K4`, latching V61 toggle buttons (`CC 48–51`), fluid non-blocking `AUD` system volume & neon B2 icon — see [CHANGELOG.md](CHANGELOG.md) |
 
@@ -44,13 +45,13 @@ No compiler or build tools required. Install the prebuilt ARM64 `.deb` package d
 ### Option 1: Install Directly on CardputerZero
 Download the `.deb` package to your CardputerZero and run:
 ```bash
-sudo apt install -y ./piano-zero_0.2.0-m5stack1_arm64.deb
+sudo apt install -y ./piano-zero_0.3.0-m5stack1_arm64.deb
 ```
 
 ### Option 2: Install Remotely Over SSH (from macOS / Linux / Windows)
 ```bash
-scp releases/v0.2.0/piano-zero_0.2.0-m5stack1_arm64.deb <user>@<cardputer-ip>:/tmp/
-ssh <user>@<cardputer-ip> "sudo apt install -y /tmp/piano-zero_0.2.0-m5stack1_arm64.deb"
+scp releases/v0.3.0/piano-zero_0.3.0-m5stack1_arm64.deb <user>@<cardputer-ip>:/tmp/
+ssh <user>@<cardputer-ip> "sudo apt install -y /tmp/piano-zero_0.3.0-m5stack1_arm64.deb"
 ```
 
 After installation, **Piano Zero** appears automatically in the CardputerZero **`APPLaunch`** launcher with its neon icon.
@@ -76,7 +77,7 @@ The `.deb` package does **not** include `.sf2` instrument banks so the installer
 
 ### Verify Package Integrity (Optional)
 ```bash
-cd releases/v0.2.0
+cd releases/v0.3.0
 sha256sum -c SHA256SUMS.txt
 ```
 
@@ -95,7 +96,7 @@ sudo apt remove piano-zero
 - **Real Piano Mechanics (`exxpiano FXCore`)**: Hammer/damper release noise, deferred sympathetic string resonance (`ResL`/`ResS`/`ResV3`) with voice-budget floor & burst limiting, sustain pedal down/up noise, randomness jitter, and live exponential touch curve (`0.40–2.50`) — saved per bank so electric pianos can keep mechanics OFF while acoustic grands keep them ON.
 - **Studio Hall Reverb & Tone (`FX` Tab)**: Freeverb stereo reverb (`Active`, `Send 0–127`, `Room`, `Damp`, `Width`, `Level`), 1 kHz Tilt Tone EQ (`-6..+6 dB`), and C1 soft-knee stereo bus limiter.
 - **Built-in SMF 0/1 MIDI Player (`MID` Tab)**: Ships with MAESTRO concert recordings (*La Campanella* & *Un Sospiro*) played live through your active instrument with half-pedaling, `-10s/+10s` seek, repeat, and play-along support.
-- **USB Audio & USB MIDI Hot-Plug**: Auto-prefers external USB audio interfaces (e.g., M-Audio M-Track Duo / `PCM2900C`) with `70%` startup HW volume and live switching to internal ES8389 audio. **Any class-compliant USB MIDI keyboard & sustain pedal (`CC 64`/`CC 7`) works out-of-the-box**; hardware knob/button defaults (`CC 20–23`, `CC 48–51`, `NAV` mode) are currently tested and pre-configured for the **Alesis V61** *(configurable MIDI Learn for other controllers is planned)*.
+- **USB Audio & Universal USB MIDI Learn**: Auto-prefers external USB audio interfaces (e.g., M-Audio M-Track Duo / `PCM2900C`) with `70%` startup HW volume and live switching to internal ES8389 audio. **Any class-compliant USB MIDI keyboard & sustain pedal (`CC 64`/`CC 7`) works out-of-the-box**, and **Universal MIDI Learn** (`L` key or `MID → MIDI Learn`, Latching & Momentary button modes) maps any controller's knobs, faders, and buttons (pre-configured with Alesis V61 defaults).
 - **7-Tab Neon `320×170` LVGL 9.5 UI**: `PLY | BNK | TCH | FX | MID | AUD | MON` with live 88-key visualizer, 24-bar oscilloscope, dual L/R VU meters, live touch-curve graph, and 1 Hz CPU/Temp/RAM/DFD monitor.
 
 ---
