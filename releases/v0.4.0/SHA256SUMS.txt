@@ -1,0 +1,1 @@
+b61cfb9f3e4cbb77aa92844107a921999ebfc398e11f246c1086817031b48e66  piano-zero_0.4.0-m5stack1_arm64.deb

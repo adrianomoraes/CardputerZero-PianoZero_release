@@ -1,6 +1,6 @@
 # CardputerZero Piano Zero — User Manual
 
-Complete operating guide for **Piano Zero (`v0.3.0`)** on the **M5Stack CardputerZero**.
+Complete operating guide for **Piano Zero (`v0.4.0`)** on the **M5Stack CardputerZero**.
 
 > **Note on SoundFont Banks:** The Piano Zero `.deb` package (`~730 KB`) installs the application, icon, and demo MIDI pieces only — **`.sf2` instrument banks are not bundled in the `.deb`**. On first launch (or anytime via **`BNK → Download Online Banks`**), you can download any of the 5 curated acoustic & electric piano banks directly over Wi-Fi onto your microSD card, or copy your own `.sf2` files via `scp`.
 

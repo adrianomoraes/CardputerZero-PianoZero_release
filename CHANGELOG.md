@@ -2,6 +2,15 @@
 
 All notable changes to **CardputerZero Piano Zero** are documented in this file.
 
+## [0.4.0] - 2026-11-25
+
+### Added
+- **Headless Mode (`--headless`) & DAW Zero Hosting (`DAWZERO_HOSTED=1`)**:
+  - Runs the DFD SoundFont engine, mechanics, reverb, and ALSA MIDI without LVGL/framebuffer UI so **DAW Zero** can host PianoZero directly over PipeWire `dawzero_inst_bus`.
+  - When `DAWZERO_HOSTED=1`, forces `48000 Hz` on the `default` PipeWire sink and skips USB-MIDI hotplug auto-connect so DAW Zero owns routing with zero double-notes or resampling cracks.
+- **Live Control Export Protocol (`DAWZERO_CTRL_SOCK`)**:
+  - Exports 7 live controls directly into DAW Zero's `MID → 2:INST` subtab: `Sound Bank`, `Touch Curve`, `Reverb FX`, `Reverb Send`, `Tone Tilt EQ`, `Pedal/Mech` toggle, and `Pedal Level`.
+
 ## [0.3.0] - 2026-11-23
 
 ### Added
